@@ -1,13 +1,53 @@
 {% extends 'blog/base.html' %}
+
 {% block content %}
+<br>
+
 
             {% for post in posts %}
+            <div class="card text-dark border-info shadow p-3 
+            ">
+                
+
                 <div class="post">
-                    <div class="date">
-                  <p>published: {{ post.published_date }}</p>
+                    <div card="card-body">
+
+                    <h2><a  class="card-title" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                    
+                    <p class="card-text">{{ post.text|linebreaksbr }}</p>
+                
+                <br>
+                
+                     <div class="date">
+                  <p class="card-subtitle">published: {{ post.published_date }}</p>
                     </div>
-                    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-                    <p>{{ post.text|linebreaksbr }}</p>
                 </div>
+
+            </div>
+        </div>
+        
+        <br>
             {% endfor %}
+        
+     <div class="pagination">
+        
+         <span class="step-links">
+       
+     {% if posts.has_previous %}
+     <a class="btn btn-outline-primary" href="?page=1">&laquo;First</a>
+     <a class="btn btn-outline-primary" href="?page={{posts.previous_page_number}}">Previous</a>
+     {% endif %}
+     <span class="step-link">
+     <a class="btn btn-primary" href="#">current</a>
+ </span>
+    
+     {% if posts.has_next %}
+            <a  class="btn btn-outline-primary" href="?page={{ posts.next_page_number }}">next</a>
+            <a class="btn btn-outline-primary" href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+   
+    </div>
+
   {% endblock %}          
+
