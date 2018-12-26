@@ -3,14 +3,15 @@ from django.utils import timezone
 from .forms import PostForm
 from django.shortcuts import redirect
 from .models import Post
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 def post_list(request):
-    posts_list = Post.objects.all()
-    paginator = Paginator(posts_list, 3,allow_empty_first_page=False)
+    posts_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    
+    paginator = Paginator(posts_list,3,allow_empty_first_page=False)
     page=request.GET.get('page')
     posts=paginator.get_page(page)
-    
+
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_detail(request, pk):

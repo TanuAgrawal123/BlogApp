@@ -11,7 +11,7 @@ Dependencies:
 git clone https:\\github.com\TanuAgrawal123\django-framework
 ```
 
-### 2. Install and activate the virtual environment 
+### 2. Install and activate the virtual environment for Windows 
 ```commandline
 python3 -m venv myvenv
 myvenv\scripts\activate
