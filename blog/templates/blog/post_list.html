@@ -1,7 +1,31 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+<style>
+.jumbotron{
+        background-image:url("static/images/background.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        min-height: 100vh;
+    }
+</style>
 <br>
+<section id="section-top" class="jumbotron jumbotron-fluid text-white d-flex justify-content-center align-items-center">
+                <div class="container text-center">
+                    <h1 class="display-1 text-primary text-uppercase">My Personal blog</h1>
+                    <p class="display-4 d-none d-sm-block">Contact Me</p>
+                    
+                    <a href="#" class="btn btn-large btn-primary"><i class="fa fa-linkedin" aria-hidden="true"></i>Linkedin</a>
+                    <a href="#" class="btn btn-large btn-primary"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a>
+                </div>
+            </section>
+
+<article>
+    <header>
+        <a href="#0" class="batch batch-primary">Category</a> 
+    </header>
+    </article>
 
 
             {% for post in posts %}
