@@ -1,72 +1,81 @@
 
  
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block content %}
-<article>
-    <header>
+
+<div class="container my-3 my-sm-5">
+    <div class="row">
+        <div class="col-12 col-lg-8">
+<article class="mb-3">
+    <header class="mb-2">
         <a href="#0" class="badge badge-primary">Category</a>
         <h1>{{ post.title }}</h1>
         <div><a href="#0">Tanu Agrawal</a></div>
         {% if post.published_date %}
             
-               <div>Posted on: {{ post.published_date }}</div>
+               <div class="small">Posted on: {{ post.published_date }}</div>
         {% endif %}
-        <div><span class="badge badge-primary">13 likes</span><span class="badge badge-primary">3 comments</span></div>
+        {% if user.is_authenticated %}
+         <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><i class="fa fa-pencil"></i></a>
+         {% endif %}
+        <div class="small"><span class="badge badge-primary">13 likes</span><span class="badge badge-primary">3 comments</span></div>
+        <div class="small">
         <a href="#0" class="badge badge-secondary">#tag</a>
         <a href="#0" class="badge badge-secondary">#tag</a>
         <a href="#0" class="badge badge-secondary">#tagtag</a>
-        <a href="#0" class="badge badge-secondary">#tag</a>
+        <a href="#0" class="badge badge-secondary">#tag</a></div>
 
 
 
             
         
         </header>
-        <section id="main">
-            <figure class="figure">
-                <img src="http://placehold.it/800x600" class="figure-img img-fluid" alt="img-figure">
-                <figcaption class="figure-caption">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. </p>
-                </figcaption>
-            </figure>
-            <p class="lead">{{ post.text|linebreaksbr }}</p>
+
+        <section id="main mb-3">
+            <br>
+            <p class="text-dark">{{ post.text|linebreaksbr }}</p>
         </section>
-        <section id="comments">
-            <button type="button" class="btn btn-lg btn-primary">Like</button>
+        <section id="comments" class="small">
+            <button type="button" class="btn btn-lg btn-primary mb-3">Like</button>
             <h2>Comments</h2>
             <div class="media">
-                <img src="https://c.disquscdn.com/next/embed/assets/img/noavatar92.7b2fde640943965cc88df0cdee365907.png">
+                <img src="https://c.disquscdn.com/next/embed/assets/img/noavatar92.7b2fde640943965cc88df0cdee365907.png" class="mr-3">
                 <div class="media-body">
                     <p><a href=mailto:tanuagrawal1304@gmail.com> Name</a>  (Posted on: {{ post.published_date }})</p>lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua.</div>
                 </div>
                 <hr>
             <div class="media">
-                <img src="https://c.disquscdn.com/next/embed/assets/img/noavatar92.7b2fde640943965cc88df0cdee365907.png">
+                <img src="https://c.disquscdn.com/next/embed/assets/img/noavatar92.7b2fde640943965cc88df0cdee365907.png" class="mr-3">
                 <div class="media-body">
                     <p><a href=mailto:tanuagrawal1304@gmail.com> Name </a>  (Posted on: {{ post.published_date }})</p>lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua.</div>
                 </div>
                 <hr>
             
             <form>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
                 <div class="form-group">
                     <label for="name">Name:
                     </label>
                     <input type="text" class="form-control" placeholder="name" id="name" name="name" required>
                 </div>
+           </div><div class="col-12 col-sm-6">
                  <div class="form-group">
+                    
                     <label for="email">Email:
                     </label>
                     <input type="email" class="form-control" placeholder="examole@gmail.com" id="email" name=email" required>
-                </div>
+                </div></div></div>
                  <div class="form-group">
+                    
                     <label for="comment">Your Comment:
                     </label>
                     <textarea class="form-control" placeholder="Write your Comment here. Maxiumum 500 characters" rows="5"id="comment" name=comment" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="reset" class="btn btn-reset">Reset</button>
+                    <button type="reset" class="btn btn-danger">Reset</button>
                 
 
 
@@ -74,10 +83,53 @@
             </form>
             </section>
 
+
         </article>
+    </div>
+    <div class="col-12 col-lg-4">
+        <aside>
+            <h2 class="mb-3 text-center text-primary">About Me</h2>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="text-center">
+                    <img src="{% static 'images/me.jpg' %}" class="img-float rounded-circle">
+                </div>
+                   <h5 class="text-center"><strong>TANU AGRAWAL</strong></h5>
+                   <p>I am Tanu Agrawal currently pusuing for my bachelor's degree in Computer Science and Enginering from B.I.E.T. jhansi</p>
+                   <hr>
+               </div>
+               <div class="card-footer">
+                <section class="contact">
+      <h4 class="text-center">CONTACT ME</h4>
+      <div class="row my-3">
+        <div class="col-12 col-lg-3">
+      
+                   
+
+           <a href="http://github.com/TanuAgrawal123"><i class="fa fa-github"></i></a></div>
+        
+         <div class="col-12 col-lg-3"><a href="https://twitter.com/TanuAgr48102256"><i class="fa fa-twitter" aria-hidden="true"></i></a></div>
+        
+        
+          <div class="col-12 col-lg-3"><a href="https://in.linkedin.com/in/tanu-agrawal-619515172"><i class="fa fa-linkedin"></i></a></div>
+        
+        
+          <div class="col-12 col-lg-3"><a href="mailto:tanuagrawal1304@gmail.com"><i class="fa fa-envelope-o"></i></div></a>
+        
+      </section>
+      <div class="copyright">
+      <p class="text-center text-secondary">2019 &copy; Tanu Agrawal</p>
+    </div>
+                   
+
+                </div>
+            </div>
+        </aside>
+    </div>
+    </div>
 
 
        
         
-        
+        </div>
 {% endblock %}

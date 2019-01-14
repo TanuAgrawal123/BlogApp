@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block content %}
 <style>
@@ -10,22 +11,22 @@
         min-height: 100vh;
     }
 </style>
-<br>
+
 <section id="section-top" class="jumbotron jumbotron-fluid text-white d-flex justify-content-center align-items-center">
                 <div class="container text-center">
                     <h1 class="display-1 text-primary text-uppercase">My Personal blog</h1>
                     <p class="display-4 d-none d-sm-block">Contact Me</p>
                     
-                    <a href="#" class="btn btn-large btn-primary"><i class="fa fa-linkedin" aria-hidden="true"></i>Linkedin</a>
-                    <a href="#" class="btn btn-large btn-primary"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a>
+                    <a href=https://in.linkedin.com/in/tanu-agrawal-619515172" class="btn btn-large btn-primary"><i class="fa fa-linkedin" aria-hidden="true"></i>Linkedin</a>
+                    <a href="https://twitter.com/TanuAgr48102256" class="btn btn-large btn-primary"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a>
                 </div>
             </section>
+   
+            <div class="container">
 
-<article>
-    <header>
-        <a href="#0" class="batch batch-primary">Category</a> 
-    </header>
-    </article>
+<div class="row">
+    <div class="col-12 col-lg-8">
+
 
 
             {% for post in posts %}
@@ -33,7 +34,7 @@
             ">
                 
 
-                <div class="post">
+               
                     <div card="card-body">
 
                     <h2><a  class="card-title" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
@@ -42,11 +43,9 @@
                 
                 <br>
                 
-                     <div class="date">
+                   
                   <p class="card-subtitle">published: {{ post.published_date }}</p>
-                    </div>
-                </div>
-
+                    
             </div>
         </div>
         
@@ -72,6 +71,51 @@
     </span>
    
     </div>
+</div>
+ <div class="col-12 col-lg-4">
+        <aside>
+            <h2 class="mb-3 text-center text-primary">About Me</h2>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="text-center">
+                    <img src="{% static 'images/me.jpg' %}" class="img-float rounded-circle">
+                </div>
+                   <h5 class="text-center"><strong>TANU AGRAWAL</strong></h5>
+                   <p> I am Tanu Agrawal currently pusuing for my bachelor's degree in Computer Science and Enginering from B.I.E.T. jhansi</p>
+                   <hr>
+               </div>
+               <div class="card-footer">
+                <section class="contact">
+      <h4 class="text-center">CONTACT ME</h4>
+      <div class="row my-3">
+        <div class="col-12 col-lg-3">
+      
+                   
+
+           <a href="http://github.com/TanuAgrawal123"><i class="fa fa-github"></i></a></div>
+        
+         <div class="col-12 col-lg-3"><a href="https://twitter.com/TanuAgr48102256"><i class="fa fa-twitter" aria-hidden="true"></i></a></div>
+        
+        
+          <div class="col-12 col-lg-3"><a href="https://in.linkedin.com/in/tanu-agrawal-619515172"><i class="fa fa-linkedin"></i></a></div>
+        
+        
+          <div class="col-12 col-lg-3"><a href="mailto:tanuagrawal1304@gmail.com"><i class="fa fa-envelope-o"></i></div></a>
+        
+      </section>
+      <div class="copyright">
+      <p class="text-center text-secondary">2019 &copy; Tanu Agrawal</p>
+    </div>
+                   
+
+                </div>
+            </div>
+        </aside>
+    </div>
+    </div>
+
+</div>
+</div>
 
   {% endblock %}          
 
