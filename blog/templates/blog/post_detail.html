@@ -20,14 +20,14 @@
         {% if user.is_authenticated %}
          <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><i class="fa fa-pencil"></i></a>
          {% endif %}
-        <div class="small"><span class="badge badge-primary">13 likes</span><span class="badge badge-primary">3 comments</span></div>
+        <div class="small"><span class="badge badge-primary">13 likes</span><span class="badge badge-primary">{{ post.comments.count }} Comments</span></div>
         <div class="small">
         <a href="#0" class="badge badge-secondary">#tag</a>
         <a href="#0" class="badge badge-secondary">#tag</a>
         <a href="#0" class="badge badge-secondary">#tagtag</a>
         <a href="#0" class="badge badge-secondary">#tag</a></div>
 
-
+ 
 
             
         
@@ -40,48 +40,22 @@
         <section id="comments" class="small">
             <button type="button" class="btn btn-lg btn-primary mb-3">Like</button>
             <h2>Comments</h2>
+             {% for comment in post.comments.all %}
+                 
             <div class="media">
                 <img src="https://c.disquscdn.com/next/embed/assets/img/noavatar92.7b2fde640943965cc88df0cdee365907.png" class="mr-3">
                 <div class="media-body">
-                    <p><a href=mailto:tanuagrawal1304@gmail.com> Name</a>  (Posted on: {{ post.published_date }})</p>lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua.</div>
+                    <strong>{{ comment.user }}</strong><p>  (Posted on: {{ comment.created_date }})</p><p>{{ comment.text|linebreaks }}</p></div>
                 </div>
                 <hr>
-            <div class="media">
-                <img src="https://c.disquscdn.com/next/embed/assets/img/noavatar92.7b2fde640943965cc88df0cdee365907.png" class="mr-3">
-                <div class="media-body">
-                    <p><a href=mailto:tanuagrawal1304@gmail.com> Name </a>  (Posted on: {{ post.published_date }})</p>lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua.</div>
-                </div>
-                <hr>
-            
-            <form>
-                <div class="row">
-                    <div class="col-12 col-sm-6">
-                <div class="form-group">
-                    <label for="name">Name:
-                    </label>
-                    <input type="text" class="form-control" placeholder="name" id="name" name="name" required>
-                </div>
-           </div><div class="col-12 col-sm-6">
-                 <div class="form-group">
-                    
-                    <label for="email">Email:
-                    </label>
-                    <input type="email" class="form-control" placeholder="examole@gmail.com" id="email" name=email" required>
-                </div></div></div>
-                 <div class="form-group">
-                    
-                    <label for="comment">Your Comment:
-                    </label>
-                    <textarea class="form-control" placeholder="Write your Comment here. Maxiumum 500 characters" rows="5"id="comment" name=comment" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="reset" class="btn btn-danger">Reset</button>
+             {% empty %}
+             <p>No comments here yet:(</p>
+             {% endfor %}   
                 
-
-
-
-            </form>
-            </section>
+<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+            
+          
+          
 
 
         </article>
