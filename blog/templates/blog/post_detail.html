@@ -20,14 +20,9 @@
         {% if user.is_authenticated %}
          <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><i class="fa fa-pencil"></i></a>
          {% endif %}
-        <div class="small"><span class="badge badge-primary">13 likes</span><span class="badge badge-primary">{{ post.comments.count }} Comments</span></div>
+        <div class="small"><span class="badge badge-primary">{{ post.comments.count }} Comments</span></div>
         <div class="small">
-        <a href="#0" class="badge badge-secondary">#tag</a>
-        <a href="#0" class="badge badge-secondary">#tag</a>
-        <a href="#0" class="badge badge-secondary">#tagtag</a>
-        <a href="#0" class="badge badge-secondary">#tag</a></div>
-
- 
+        
 
             
         
@@ -38,7 +33,7 @@
             <p class="text-dark">{{ post.text|linebreaksbr }}</p>
         </section>
         <section id="comments" class="small">
-            <button type="button" class="btn btn-lg btn-primary mb-3">Like</button>
+            
             <h2>Comments</h2>
              {% for comment in post.comments.all %}
                  
