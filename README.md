@@ -1,5 +1,6 @@
 # Blog website using Django framework
 A simple Blog web app.
+Website live on: http://tanuagrawal.pythonanywhere.com/
 ## Getting started with development
 Dependencies:
 
